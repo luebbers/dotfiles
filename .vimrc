@@ -24,6 +24,8 @@ set ruler                      "  Show row and column ruler information
 set undolevels=1000            "  Number of undo levels
 set backspace=indent,eol,start "  Backspace behaviour
 let mapleader=","              "  Change leader key to ','
+set timeoutlen=1000
+set ttimeoutlen=0              "  Fix ESC timeout
 
 "" Keybindings
 " Move between windows using ALT+movement
