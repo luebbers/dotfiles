@@ -6,7 +6,7 @@ git pull origin master;
 
 function doIt() {
    # update home directory
-   rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
+   rsync --exclude ".git/" --exclude ".DS_Store" --exclude "update.sh" \
       --exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
 
    # TODO: check for vim
