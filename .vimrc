@@ -1,3 +1,21 @@
+"" Plugin config (Vundle)
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 "" General
 set number                     "  Show line numbers
 set linebreak                  "  Break lines at word (requires Wrap lines)
@@ -43,17 +61,4 @@ nmap <silent> <C-L> :tabn<CR>
 " Create splits with CTRL+W- and CTRL+W|
 nmap <silent> <C-W>- :sp<CR>
 nmap <silent> <C-W>\| :vsp<CR>
-
-"" Plugins
-call plug#begin('~/.vim/plugged')
-
-" EasyAlign
-Plug 'junegunn/vim-easy-align'
-" Start interactive EasyAlign in visual mode
-xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-" Add plugins to &runtimepath
-call plug#end()
 
