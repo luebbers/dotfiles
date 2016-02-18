@@ -18,10 +18,11 @@ function doIt() {
    fi
 
    # check if vim has plugin manager
-   if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
-      read -p "No plugin manager found, install vundle?" -n 1
+   if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
+      read -p "No plugin manager found, install vim-plug?" -n 1
       if [[ $REPLY =~ ^[Yy]$ ]]; then
-         git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+         curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+                https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
       fi
    fi
 
@@ -42,7 +43,6 @@ function doIt() {
    fi
 
    # update home directory
-   echo "Updating links in home directory..."
    FILES=`find . -maxdepth 1 | grep -vEf exclude`
    cd $HOME
    for i in $FILES; do
