@@ -9,16 +9,36 @@ function doIt() {
    rsync --exclude ".git/" --exclude ".DS_Store" --exclude "update.sh" \
       --exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
 
-   # TODO: check for vim
+   # check for vim
+   if [ ! -e /usr/bin/vim ]; then
+      echo "No vim found, please install before running update.sh."
+      exit 1
+   fi
 
-   # TODO: check if vim has plugin manager
+   # check if vim has plugin manager
+   if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
+      read -p "No plugin manager found, install vim-plug?" -n 1
+      if [[ $REPLY =~ ^[Yy]$ ]]; then
+         curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+                https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      fi
+   fi
 
    # TODO: update vim plugins
 
-   # TODO: check for zsh
+   # check for zsh
+   if [ ! -e /usr/bin/zsh ]; then
+      echo "No zsh found, please install before running update.sh."
+      exit 1
+   fi
 
-   # TODO: check for oh-my-zsh
-   
+   # check for oh-my-zsh
+   if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
+      read -p "No oh-my-zsh found, install?" -n 1
+      if [[ $REPLY =~ ^[Yy]$ ]]; then
+         sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+      fi
+   fi
 
 }
 
