@@ -54,6 +54,10 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+" clang_complete
+Plug 'Rip-Rip/clang_complete'
+let g:clang_user_options='|| exit 0'
+
 " Add plugins to &runtimepath
 call plug#end()
 
