@@ -58,6 +58,9 @@ nmap ga <Plug>(EasyAlign)
 Plug 'Rip-Rip/clang_complete'
 let g:clang_user_options='|| exit 0'
 
+" fugitive
+Plug 'tpope/vim-fugitive'
+
 " Add plugins to &runtimepath
 call plug#end()
 
