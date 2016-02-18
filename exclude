@@ -1,0 +1,6 @@
+^\.$
+^./exclude$
+^./\.git
+^./README.md$
+^./update.sh$
+\.swp$

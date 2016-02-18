@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "${BASH_SOURCE}")";
+# find out absolute path to ourselves (http://stackoverflow.com/questions/4774054)
+pushd `dirname $0` > /dev/null
+DOTFILES=`pwd -P`
+popd > /dev/null
+echo "Switching to $DOTFILES"
+cd "$DOTFILES"
 
 git pull origin master;
 
@@ -38,8 +43,12 @@ function doIt() {
    fi
 
    # update home directory
-   rsync --exclude ".git/" --exclude ".DS_Store" --exclude "update.sh" \
-      --exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
+   FILES=`find . -maxdepth 1 | grep -vEf exclude`
+   cd $HOME
+   for i in $FILES; do
+      ln -sf "$DOTFILES/$i" .
+   done
+   cd "$DOTFILES"
 }
 
 if [ "$1" = "--force" -o "$1" = "-f" ]; then
