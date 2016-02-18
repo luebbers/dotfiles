@@ -5,9 +5,6 @@ cd "$(dirname "${BASH_SOURCE}")";
 git pull origin master;
 
 function doIt() {
-   # update home directory
-   rsync --exclude ".git/" --exclude ".DS_Store" --exclude "update.sh" \
-      --exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
 
    # check for vim
    if [ ! -e /usr/bin/vim ]; then
@@ -33,13 +30,16 @@ function doIt() {
    fi
 
    # check for oh-my-zsh
-   if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
+   if [ ! -d $HOME/.oh-my-zsh ]; then
       read -p "No oh-my-zsh found, install?" -n 1
       if [[ $REPLY =~ ^[Yy]$ ]]; then
          sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
       fi
    fi
 
+   # update home directory
+   rsync --exclude ".git/" --exclude ".DS_Store" --exclude "update.sh" \
+      --exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
 }
 
 if [ "$1" = "--force" -o "$1" = "-f" ]; then
