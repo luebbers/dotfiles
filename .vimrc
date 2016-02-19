@@ -30,6 +30,10 @@ set wildmenu
 set wildmode=longest:full,full "  Turn on wildment
 set mouse=a                    "  Enable mouse support
 set cursorline                 "  Highlight current line
+set listchars=tab:▸\ ,eol:¬    "  Use special characters for whitespace
+
+"" Leader commands
+nmap <leader>l :set list!<CR>
 
 "" Keybindings
 " Move between windows using ALT+movement or cursor keys
