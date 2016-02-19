@@ -89,12 +89,24 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+"let g:syntastic_systemverilog_checkers = ['verilator']
+let g:syntastic_filetype_map = { "systemverilog" : "verilog" }
 
 " solarized
 Plug 'altercation/vim-colors-solarized'
 syntax enable
 set background=dark
 "let g:solarized_termcolors=256
+
+" SystemVerilog
+Plug 'nachumk/systemverilog.vim'
+
+" Airline status line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" vim-bufferline
+Plug 'bling/vim-bufferline'
 
 " Add plugins to &runtimepath
 call plug#end()
