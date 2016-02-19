@@ -28,6 +28,7 @@ set timeoutlen=1000
 set ttimeoutlen=0              "  Fix ESC timeout
 set wildmenu
 set wildmode=longest:full,full "  Turn on wildment
+set mouse=a                    "  Enable mouse support
 
 "" Keybindings
 " Move between windows using ALT+movement
@@ -85,6 +86,14 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" solarized
+Plug 'altercation/vim-colors-solarized'
+syntax enable
+set background=dark
+let g:solarized_termcolors=256
+
 " Add plugins to &runtimepath
 call plug#end()
 
+" Set colorscheme (needs runtimepath)
+colorscheme solarized
