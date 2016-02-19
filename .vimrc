@@ -26,6 +26,8 @@ set backspace=indent,eol,start "  Backspace behaviour
 let mapleader=","              "  Change leader key to ','
 set timeoutlen=1000
 set ttimeoutlen=0              "  Fix ESC timeout
+set wildmenu
+set wildmode=longest:full,full "  Turn on wildment
 
 "" Keybindings
 " Move between windows using ALT+movement
@@ -43,6 +45,18 @@ nmap <silent> <C-L> :tabn<CR>
 " Create splits with CTRL+W- and CTRL+W|
 nmap <silent> <C-W>- :sp<CR>
 nmap <silent> <C-W>\| :vsp<CR>
+" Save with CTRL+S
+" If the current buffer has never been saved, it will have no name,
+" call the file browser to save it, otherwise just save it."
+command -nargs=0 -bar Update if &modified 
+                           \|    if empty(bufname('%'))
+                           \|        browse confirm write
+                           \|    else
+                           \|        confirm write
+                           \|    endif
+                           \|endif
+nnoremap <silent> <C-S> :<C-u>Update<CR>
+inoremap <c-s> <Esc>:Update<CR>
 
 "" Plugins
 call plug#begin('~/.vim/plugged')
@@ -60,6 +74,16 @@ let g:clang_user_options='|| exit 0'
 
 " fugitive
 Plug 'tpope/vim-fugitive'
+
+" syntastic
+Plug 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Add plugins to &runtimepath
 call plug#end()

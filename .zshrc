@@ -83,3 +83,7 @@ export EDITOR=vim
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# disable flow control (I want to use CTRL-S for other things)
+stty -ixon
+
