@@ -95,3 +95,7 @@ alias tl="tmux list-sessions"
 # disable flow control (I want to use CTRL-S for other things)
 stty -ixon
 
+# fix dircolors for solarized dark
+eval `dircolors .dircolors-dark`
+
+
