@@ -5,22 +5,22 @@ set showbreak=+++              "  Wrap-broken line prefix
 set textwidth=79               "  Line wrap (number of cols)
 set showmatch                  "  Highlight matching brace
 set visualbell                 "  Use visual bell (no beeping)
- 
+
 set hlsearch                   "  Highlight all search results
 set smartcase                  "  Enable smart-case search
 set ignorecase                 "  Always case-insensitive
 set incsearch                  "  Searches for strings incrementally
- 
+
 set autoindent                 "  Auto-indent new lines
 set expandtab                  "  Use spaces instead of tabs
 set shiftwidth=3               "  Number of auto-indent spaces
 set smartindent                "  Enable smart-indent
 set smarttab                   "  Enable smart-tabs
 set softtabstop=3              "  Number of spaces per Tab
- 
+
 "" Advanced
 set ruler                      "  Show row and column ruler information
- 
+set laststatus=2               "  Always show status line$
 set undolevels=1000            "  Number of undo levels
 set backspace=indent,eol,start "  Backspace behaviour
 let mapleader=","              "  Change leader key to ','
@@ -29,6 +29,7 @@ set ttimeoutlen=0              "  Fix ESC timeout
 set wildmenu
 set wildmode=longest:full,full "  Turn on wildment
 set mouse=a                    "  Enable mouse support
+set cursorline                 "  Highlight current line
 
 "" Keybindings
 " Move between windows using ALT+movement or cursor keys
@@ -53,7 +54,7 @@ nmap <silent> <C-W>\| :vsp<CR>
 " Save with CTRL+S
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it."
-command -nargs=0 -bar Update if &modified 
+command -nargs=0 -bar Update if &modified
                            \|    if empty(bufname('%'))
                            \|        browse confirm write
                            \|    else
