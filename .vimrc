@@ -31,7 +31,7 @@ set wildmode=longest:full,full "  Turn on wildment
 set mouse=a                    "  Enable mouse support
 
 "" Keybindings
-" Move between windows using ALT+movement
+" Move between windows using ALT+movement or cursor keys
 execute "set <M-h>=\eh"
 execute "set <M-j>=\ej"
 execute "set <M-k>=\ek"
@@ -40,6 +40,10 @@ nmap <silent> <M-j> :wincmd j<CR>
 nmap <silent> <M-h> :wincmd h<CR>
 nmap <silent> <M-l> :wincmd l<CR>
 nmap <silent> <M-k> :wincmd k<CR>
+nmap <silent> <Down> :wincmd j<CR>
+nmap <silent> <Left> :wincmd h<CR>
+nmap <silent> <Right> :wincmd l<CR>
+nmap <silent> <Up> :wincmd k<CR>
 " Move between tabs using CTRL+movement
 nmap <silent> <C-H> :tabp<CR>
 nmap <silent> <C-L> :tabn<CR>
