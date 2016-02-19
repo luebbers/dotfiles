@@ -90,7 +90,7 @@ let g:syntastic_check_on_wq = 0
 Plug 'altercation/vim-colors-solarized'
 syntax enable
 set background=dark
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 
 " Add plugins to &runtimepath
 call plug#end()
