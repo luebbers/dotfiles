@@ -84,6 +84,14 @@ export EDITOR=vim
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Tmux aliases
+alias tmux="tmux -2"
+alias tm="tmux"
+alias ta="tmux attach -t"
+alias tra="tmux attach"             # reattach to last session
+alias ts="tmux new-session -s"
+alias tl="tmux list-sessions"
+
 # disable flow control (I want to use CTRL-S for other things)
 stty -ixon
 
