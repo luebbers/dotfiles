@@ -96,6 +96,6 @@ alias tl="tmux list-sessions"
 stty -ixon
 
 # fix dircolors for solarized dark
-eval `dircolors .dircolors-dark`
+eval `dircolors ~/.dircolors-dark`
 
 
