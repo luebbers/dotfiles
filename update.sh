@@ -43,12 +43,14 @@ function doIt() {
    fi
 
    # update home directory
+   echo -ne "Updating home directory..."
    FILES=`find . -maxdepth 1 | grep -vEf exclude`
    cd $HOME
    for i in $FILES; do
       ln -sf "$DOTFILES/$i" .
    done
    cd "$DOTFILES"
+   echo "done."
 }
 
 if [ "$1" = "--force" -o "$1" = "-f" ]; then
