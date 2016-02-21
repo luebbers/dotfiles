@@ -51,6 +51,12 @@ function doIt() {
    done
    cd "$DOTFILES"
    echo "done."
+
+   # install setup template, if not present
+   if [ ! -e $HOME/.mysetup ]; then
+      echo "Installing per-host setup template. Edit .mysetup to fit your needs."
+      cp $DOTFILES/.mysetup $HOME/.mysetup
+   fi
 }
 
 if [ "$1" = "--force" -o "$1" = "-f" ]; then

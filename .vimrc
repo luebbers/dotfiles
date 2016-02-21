@@ -71,6 +71,19 @@ inoremap <c-s> <Esc>:Update<CR>
 "" Plugins
 call plug#begin('~/.vim/plugged')
 
+" solarized
+Plug 'altercation/vim-colors-solarized'
+syntax enable
+set background=dark
+"let g:solarized_termcolors=256
+
+" Airline status line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" vim-bufferline
+Plug 'bling/vim-bufferline'
+
 " EasyAlign
 Plug 'junegunn/vim-easy-align'
 " Start interactive EasyAlign in visual mode
@@ -78,10 +91,7 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" clang_complete
-Plug 'Rip-Rip/clang_complete'
-let g:clang_user_options='|| exit 0'
-
+if $MYSETUP_DEVEL == 1          " general development plugins
 " fugitive
 Plug 'tpope/vim-fugitive'
 
@@ -95,23 +105,19 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 "let g:syntastic_systemverilog_checkers = ['verilator']
-let g:syntastic_filetype_map = { "systemverilog" : "verilog" }
+endif
 
-" solarized
-Plug 'altercation/vim-colors-solarized'
-syntax enable
-set background=dark
-"let g:solarized_termcolors=256
+if $MYSETUP_DEVEL_SW == 1        " software development-specific plugins
+" clang_complete
+Plug 'Rip-Rip/clang_complete'
+let g:clang_user_options='|| exit 0'
+endif
 
+if $MYSETUP_DEVEL_HW == 1        " hardware development-specific plugins
 " SystemVerilog
 Plug 'nachumk/systemverilog.vim'
-
-" Airline status line
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" vim-bufferline
-Plug 'bling/vim-bufferline'
+let g:syntastic_filetype_map = { "systemverilog" : "verilog" }
+endif
 
 " Add plugins to &runtimepath
 call plug#end()
