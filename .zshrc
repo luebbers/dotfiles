@@ -105,3 +105,39 @@ export MC_SKIN=$HOME/.mc/solarized-dark.ini
 if [ -e $HOME/.mysetup ]; then
    source $HOME/.mysetup
 fi
+
+# Check for existing tmux sessions
+# If one exists, offer to attach,
+# otherwise offer to create new.
+if [ -z "$TMUX" ]; then      # only try this outside of a tmux session
+   TSESS=`tmux list-sessions`
+   if [ $? -ne 0 ]; then     # no sessions
+      echo -n "No tmux sessions running - create one? [Y/n] "
+      read -q REPLY
+      if [ "$REPLY" != "n" ]; then
+         tmux
+      fi
+   else
+      if [ `echo $TSESS | wc -l` -gt 1 ]; then    # more than one session
+         if [ `echo $TSESS | wc -l` -gt 10 ]; then # more than ten sessions
+            echo "More than ten sessions running, please handle that yourself:"
+            echo $TSESS
+         else                                     # less than ten sessions
+            echo "Multiple tmux sessions running:"
+            echo "$TSESS"
+            echo -n "Choose one to reattach to: [n to cancel] "
+            read -k 1 REPLY
+            if [ "$REPLY" != "n" ]; then
+               ta $REPLY
+            fi
+         fi
+      else
+         echo -n "Reattach to running tmux session? [Y/n] "
+         read -q REPLY
+         if [ "$REPLY" != "n" ]; then
+            tra
+         fi
+      fi
+   fi
+fi
+
