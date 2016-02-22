@@ -99,7 +99,7 @@ stty -ixon
 eval `dircolors ~/.dircolors-dark`
 
 # set mc solarized theme
-export MC_SKIN=$HOME/.mc/solarized-dark.ini
+export MC_SKIN=$HOME/.mc/solarized.ini
 
 # source local per-host config
 if [ -e $HOME/.mysetup ]; then
