@@ -83,6 +83,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " vim-bufferline
 Plug 'bling/vim-bufferline'
+let g:bufferline_echo = 0
 
 " EasyAlign
 Plug 'junegunn/vim-easy-align'
