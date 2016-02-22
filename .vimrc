@@ -31,9 +31,24 @@ set wildmode=longest:full,full "  Turn on wildment
 set mouse=a                    "  Enable mouse support
 set cursorline                 "  Highlight current line
 set listchars=tab:▸\ ,eol:¬    "  Use special characters for whitespace
+set fdm=syntax                 "  Set fold mode to syntax-based
+set nofoldenable               "  Turn off folding by default
 
 "" Leader commands
-nmap <leader>l :set list!<CR>
+nmap <leader>l :set list!<CR>             " ,l - show whitespaces
+nmap <leader>s :SyntasticToggleMode<CR>   " ,s - switch Syntastic on/off
+nmap <leader>f :call FoldToggle()<CR>     " ,f - toggle folds on/off
+
+"" Functions
+function! FoldToggle()
+   if &foldcolumn
+      setlocal foldcolumn=0
+      setlocal nofoldenable
+   else
+      setlocal foldcolumn=4
+      setlocal foldenable
+   endif
+endfunction
 
 "" Keybindings
 " Move between windows using ALT+movement or cursor keys
@@ -58,7 +73,7 @@ nmap <silent> <C-W>\| :vsp<CR>
 " Save with CTRL+S
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it."
-command -nargs=0 -bar Update if &modified
+command! -nargs=0 -bar Update if &modified
                            \|    if empty(bufname('%'))
                            \|        browse confirm write
                            \|    else
@@ -125,3 +140,4 @@ call plug#end()
 
 " Set colorscheme (needs runtimepath)
 colorscheme solarized
+highlight Folded cterm=none ctermfg=11
