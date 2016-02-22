@@ -3,6 +3,7 @@ set number                     "  Show line numbers
 set linebreak                  "  Break lines at word (requires Wrap lines)
 set showbreak=+++              "  Wrap-broken line prefix
 set textwidth=79               "  Line wrap (number of cols)
+set colorcolumn=+1             "  Highlight column beyond textwidth
 set showmatch                  "  Highlight matching brace
 set visualbell                 "  Use visual bell (no beeping)
 
@@ -70,6 +71,9 @@ nmap <silent> <C-L> :tabn<CR>
 " Create splits with CTRL+W- and CTRL+W|
 nmap <silent> <C-W>- :sp<CR>
 nmap <silent> <C-W>\| :vsp<CR>
+" Scroll with CTRL+J/CTRL+K
+nmap <silent> <C-J> 3<C-E>
+nmap <silent> <C-K> 3<C-Y>
 " Save with CTRL+S
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it."
@@ -106,6 +110,15 @@ Plug 'junegunn/vim-easy-align'
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" vim-trailing-whitespace
+Plug 'bronson/vim-trailing-whitespace'
+
+" Supertab
+Plug 'ervandew/supertab'
+
+" TComment
+Plug 'tomtom/tcomment_vim'
 
 if $MYSETUP_DEVEL == 1          " general development plugins
 " fugitive
