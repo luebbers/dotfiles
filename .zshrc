@@ -53,6 +53,11 @@ plugins=(git)
 
 # User configuration
 
+# source local per-host config
+if [ -e $HOME/.mysetup ]; then
+   source $HOME/.mysetup
+fi
+
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -100,11 +105,6 @@ eval `dircolors ~/.dircolors-dark`
 
 # set mc solarized theme
 export MC_SKIN=$HOME/.mc/solarized.ini
-
-# source local per-host config
-if [ -e $HOME/.mysetup ]; then
-   source $HOME/.mysetup
-fi
 
 # Check for existing tmux sessions
 # If one exists, offer to attach,
