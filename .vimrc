@@ -158,3 +158,5 @@ call plug#end()
 " Set colorscheme (needs runtimepath)
 colorscheme solarized
 highlight Folded cterm=none ctermfg=11
+let g:airline_powerline_fonts = 1
+
