@@ -24,7 +24,6 @@ set ruler                      "  Show row and column ruler information
 set laststatus=2               "  Always show status line$
 set undolevels=1000            "  Number of undo levels
 set backspace=indent,eol,start "  Backspace behaviour
-let mapleader=","              "  Change leader key to ','
 set timeoutlen=1000
 set ttimeoutlen=0              "  Fix ESC timeout
 set wildmenu
@@ -36,9 +35,11 @@ set fdm=syntax                 "  Set fold mode to syntax-based
 set nofoldenable               "  Turn off folding by default
 
 "" Leader commands
-nmap <leader>l :set list!<CR>             " ,l - show whitespaces
-nmap <leader>s :SyntasticToggleMode<CR>   " ,s - switch Syntastic on/off
-nmap <leader>f :call FoldToggle()<CR>     " ,f - toggle folds on/off
+nmap <leader>l :set list!<CR>             " \l - show whitespaces
+nmap <leader>s :SyntasticToggleMode<CR>   " \s - switch Syntastic on/off
+nmap <leader>f :call FoldToggle()<CR>     " \f - toggle folds on/off
+nmap <leader>v :tabe ~/.vimrc<CR>         " \v - edit vimrc in new tab
+nmap <leader>r :source ~/.vimrc<CR>       " \r - reload vimrc
 
 "" Functions
 function! FoldToggle()
@@ -119,6 +120,9 @@ Plug 'ervandew/supertab'
 
 " TComment
 Plug 'tomtom/tcomment_vim'
+
+" Surround
+Plug 'tpope/vim-surround.git'
 
 if $MYSETUP_DEVEL == 1          " general development plugins
 " fugitive
