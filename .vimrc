@@ -38,7 +38,7 @@ set nofoldenable               "  Turn off folding by default
 nmap <leader>l :set list!<CR>             " \l - show whitespaces
 nmap <leader>s :SyntasticToggleMode<CR>   " \s - switch Syntastic on/off
 nmap <leader>f :call FoldToggle()<CR>     " \f - toggle folds on/off
-nmap <leader>v :tabe ~/.vimrc<CR>         " \v - edit vimrc in new tab
+nmap <leader>v :e ~/.vimrc<CR>            " \v - edit vimrc
 nmap <leader>r :source ~/.vimrc<CR>       " \r - reload vimrc
 
 "" Functions
@@ -66,9 +66,9 @@ nmap <silent> <Down> :wincmd j<CR>
 nmap <silent> <Left> :wincmd h<CR>
 nmap <silent> <Right> :wincmd l<CR>
 nmap <silent> <Up> :wincmd k<CR>
-" Move between tabs using CTRL+movement
-nmap <silent> <C-H> :tabp<CR>
-nmap <silent> <C-L> :tabn<CR>
+" Move between buffers using CTRL+movement
+nmap <silent> <C-H> :bp<CR>
+nmap <silent> <C-L> :bn<CR>
 " Create splits with CTRL+W- and CTRL+W|
 nmap <silent> <C-W>- :sp<CR>
 nmap <silent> <C-W>\| :vsp<CR>
@@ -87,6 +87,8 @@ command! -nargs=0 -bar Update if &modified
                            \|endif
 nnoremap <silent> <C-S> :<C-u>Update<CR>
 inoremap <c-s> <Esc>:Update<CR>
+" use . to repeat command for visual selection
+vnoremap . :normal .<CR>
 
 "" Plugins
 call plug#begin('~/.vim/plugged')
@@ -100,10 +102,6 @@ set background=dark
 " Airline status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" vim-bufferline
-Plug 'bling/vim-bufferline'
-let g:bufferline_echo = 0
 
 " EasyAlign
 Plug 'junegunn/vim-easy-align'
@@ -122,7 +120,7 @@ Plug 'ervandew/supertab'
 Plug 'tomtom/tcomment_vim'
 
 " Surround
-Plug 'tpope/vim-surround.git'
+Plug 'tpope/vim-surround'
 
 if $MYSETUP_DEVEL == 1          " general development plugins
 " fugitive
@@ -159,4 +157,6 @@ call plug#end()
 colorscheme solarized
 highlight Folded cterm=none ctermfg=11
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
