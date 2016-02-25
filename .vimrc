@@ -40,6 +40,8 @@ nmap <leader>s :SyntasticToggleMode<CR>   " \s - switch Syntastic on/off
 nmap <leader>f :call FoldToggle()<CR>     " \f - toggle folds on/off
 nmap <leader>v :e ~/.vimrc<CR>            " \v - edit vimrc
 nmap <leader>r :source ~/.vimrc<CR>       " \r - reload vimrc
+nmap <leader>bq :bp <BAR> bd #<CR>        " \bq - close current buffer
+nmap <leader>bn :enew<CR>                 " \bn - new buffer
 
 "" Functions
 function! FoldToggle()
@@ -122,6 +124,9 @@ Plug 'tomtom/tcomment_vim'
 " Surround
 Plug 'tpope/vim-surround'
 
+" CTRLP
+Plug 'ctrlpvim/ctrlp.vim'
+
 if $MYSETUP_DEVEL == 1          " general development plugins
 " fugitive
 Plug 'tpope/vim-fugitive'
@@ -156,7 +161,28 @@ call plug#end()
 " Set colorscheme (needs runtimepath)
 colorscheme solarized
 highlight Folded cterm=none ctermfg=11
+
+" Set up airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Set up ctrlp
+let g:gctrlp_custom_ignore = {
+  \ 'dir': '\v[\/](\.(gt|hg|svn)|\_site)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+\}
+
+" Use the nearest .git directory as the cwd
+" This makes a lot of sense if you are working on a project that is in version
+" control. It also supports works with .svn, .hg, .bzr.
+let g:ctrlp_working_path_mode = 'r'
+
+" Use a leader instead of the actual named binding
+nmap <leader>p :CtrlP<cr>
+
+" Easy bindings for its various modes
+nmap <leader>bb :CtrlPBuffer<cr>
+nmap <leader>bm :CtrlPMixed<cr>
+nmap <leader>bs :CtrlPMRU<cr>
 
