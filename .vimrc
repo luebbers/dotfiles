@@ -131,6 +131,11 @@ if $MYSETUP_DEVEL == 1          " general development plugins
 " fugitive
 Plug 'tpope/vim-fugitive'
 
+"ack
+if executable('ack-grep')
+   Plug 'mileszs/ack.vim'
+endif
+
 " syntastic
 Plug 'scrooloose/syntastic'
 set statusline+=%#warningmsg#
