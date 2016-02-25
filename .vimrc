@@ -91,6 +91,9 @@ nnoremap <silent> <C-S> :<C-u>Update<CR>
 inoremap <c-s> <Esc>:Update<CR>
 " use . to repeat command for visual selection
 vnoremap . :normal .<CR>
+" Maximize screens with CTRL-W z
+:nmap <C-W>z :MaximizerToggle<CR>
+
 
 "" Plugins
 call plug#begin('~/.vim/plugged')
@@ -127,6 +130,10 @@ Plug 'tpope/vim-surround'
 " CTRLP
 Plug 'ctrlpvim/ctrlp.vim'
 
+" maximizer
+Plug 'szw/vim-maximizer'
+let g:maximizer_set_default_mapping = 0
+
 if $MYSETUP_DEVEL == 1          " general development plugins
 " fugitive
 Plug 'tpope/vim-fugitive'
@@ -135,6 +142,9 @@ Plug 'tpope/vim-fugitive'
 if executable('ack-grep')
    Plug 'mileszs/ack.vim'
 endif
+
+" Rooter
+Plug 'airblade/vim-rooter'
 
 " syntastic
 Plug 'scrooloose/syntastic'
@@ -190,4 +200,4 @@ nmap <leader>p :CtrlP<cr>
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
-
+"
