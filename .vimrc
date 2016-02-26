@@ -133,6 +133,7 @@ Plug 'tpope/vim-surround'
 
 " CTRLP
 Plug 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 " maximizer
 Plug 'szw/vim-maximizer'
@@ -142,9 +143,9 @@ if $MYSETUP_DEVEL == 1          " general development plugins
 " fugitive
 Plug 'tpope/vim-fugitive'
 
-"ack
-if executable('ack-grep')
-   Plug 'mileszs/ack.vim'
+"ag
+if executable('ag')
+   Plug 'rking/ag.vim'
 endif
 
 " Rooter
