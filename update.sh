@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "${BASH_SOURCE}")";
+# find out absolute path to ourselves (http://stackoverflow.com/questions/4774054)
+pushd `dirname $0` > /dev/null
+DOTFILES=`pwd -P`
+popd > /dev/null
+echo "Switching to $DOTFILES"
+cd "$DOTFILES"
 
 git pull origin master;
 
 function doIt() {
-   # update home directory
-   rsync --exclude ".git/" --exclude ".DS_Store" --exclude "update.sh" \
-      --exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
 
    # check for vim
    if [ ! -e /usr/bin/vim ]; then
@@ -27,19 +29,34 @@ function doIt() {
    # TODO: update vim plugins
 
    # check for zsh
-   if [ ! -e /usr/bin/zsh ]; then
+   if [ ! -e /usr/bin/zsh -a ! -e /bin/sh ]; then
       echo "No zsh found, please install before running update.sh."
       exit 1
    fi
 
    # check for oh-my-zsh
-   if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
+   if [ ! -d $HOME/.oh-my-zsh ]; then
       read -p "No oh-my-zsh found, install?" -n 1
       if [[ $REPLY =~ ^[Yy]$ ]]; then
          sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
       fi
    fi
 
+   # update home directory
+   echo -ne "Updating home directory..."
+   FILES=`find . -maxdepth 1 | grep -vEf exclude`
+   cd $HOME
+   for i in $FILES; do
+      ln -sf "$DOTFILES/$i" .
+   done
+   cd "$DOTFILES"
+   echo "done."
+
+   # install setup template, if not present
+   if [ ! -e $HOME/.mysetup ]; then
+      echo "Installing per-host setup template. Edit .mysetup to fit your needs."
+      cp $DOTFILES/.mysetup $HOME/.mysetup
+   fi
 }
 
 if [ "$1" = "--force" -o "$1" = "-f" ]; then

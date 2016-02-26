@@ -1,0 +1,36 @@
+#!/bin/bash
+# .mysetup: per-host configuration of settings classes
+# uncomment the options that fit your system
+
+########## Development settings ##########
+# Will enable general plugins and settings for development,
+# e.g. syntax checking
+#export MYSETUP_DEVEL=1
+
+########## Software development settings ##########
+# Will enable plugins and settings for software development,
+# e.g. clang completion
+#export MYSETUP_DEVEL_SW=1
+
+########## Hardware development settings ##########
+# Will enable plugins and settings for hardware development,
+# e.g. system verilog
+#export MYSETUP_DEVEL_HW=1
+
+########## Script development settings ##########
+# Will enable plugins and settings for scripting development,
+# e.g. python stuff
+#export MYSETUP_DEVEL_SCRIPT=1
+
+########## LaTeX settings ##########
+# Will enable plugins and settings for LaTeX,
+# e.g. LaTeX formatting plugins
+#export MYSETUP_LATEX=1
+
+########## OS-specific settings ##########
+# Will enable plugins and settings for a specific OS
+# Please enable only one
+#export MYSETUP_OS_MAC=1
+#export MYSETUP_OS_LINUX=1
+#export MYSETUP_OS_WINDOWS=1
+

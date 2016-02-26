@@ -53,7 +53,12 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+# source local per-host config
+if [ -e $HOME/.mysetup ]; then
+   source $HOME/.mysetup
+fi
+
+export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -83,3 +88,56 @@ export EDITOR=vim
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Tmux aliases
+alias tmux="tmux -2"
+alias tm="tmux"
+alias ta="tmux attach -t"
+alias tra="tmux attach"             # reattach to last session
+alias ts="tmux new-session -s"
+alias tl="tmux list-sessions"
+
+# disable flow control (I want to use CTRL-S for other things)
+stty -ixon
+
+# fix dircolors for solarized dark
+eval `dircolors ~/.dircolors-dark`
+
+# set mc solarized theme
+export MC_SKIN=$HOME/.mc/solarized.ini
+
+# Check for existing tmux sessions
+# If one exists, offer to attach,
+# otherwise offer to create new.
+if [ -z "$TMUX" ]; then      # only try this outside of a tmux session
+   TSESS=`tmux list-sessions`
+   if [ $? -ne 0 ]; then     # no sessions
+      echo -n "No tmux sessions running - create one? [Y/n] "
+      read -q REPLY
+      if [ "$REPLY" != "n" ]; then
+         tmux
+      fi
+   else
+      if [ `echo $TSESS | wc -l` -gt 1 ]; then    # more than one session
+         if [ `echo $TSESS | wc -l` -gt 10 ]; then # more than ten sessions
+            echo "More than ten sessions running, please handle that yourself:"
+            echo $TSESS
+         else                                     # less than ten sessions
+            echo "Multiple tmux sessions running:"
+            echo "$TSESS"
+            echo -n "Choose one to reattach to: [n to cancel] "
+            read -k 1 REPLY
+            if [ "$REPLY" != "n" ]; then
+               ta $REPLY
+            fi
+         fi
+      else
+         echo -n "Reattach to running tmux session? [Y/n] "
+         read -q REPLY
+         if [ "$REPLY" != "n" ]; then
+            tra
+         fi
+      fi
+   fi
+fi
+

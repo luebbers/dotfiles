@@ -1,0 +1,7 @@
+^\.$
+^\./exclude$
+^\./\.git
+^\./README.md$
+^\./update.sh$
+^\./\.mysetup$
+\.swp$
