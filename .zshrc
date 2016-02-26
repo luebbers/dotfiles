@@ -90,7 +90,11 @@ export EDITOR=vim
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Tmux aliases
-alias tmux="tmux -2"
+if [ ! -z $TMUXCONF ]; then
+   alias tmux="tmux -2 -f $TMUXCONF"
+else
+   alias tmux="tmux -2"
+fi
 alias tm="tmux"
 alias ta="tmux attach -t"
 alias tra="tmux attach"             # reattach to last session
