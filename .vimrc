@@ -42,6 +42,7 @@ nmap <leader>v :e ~/.vimrc<CR>            " \v - edit vimrc
 nmap <leader>r :source ~/.vimrc<CR>       " \r - reload vimrc
 nmap <leader>bq :bp <BAR> bd #<CR>        " \bq - close current buffer
 nmap <leader>bn :enew<CR>                 " \bn - new buffer
+nmap <leader><SPACE> :nohlsearch<CR>      " \<space> - turn off search highlight
 
 "" Functions
 function! FoldToggle()
@@ -92,8 +93,11 @@ inoremap <c-s> <Esc>:Update<CR>
 " use . to repeat command for visual selection
 vnoremap . :normal .<CR>
 " Maximize screens with CTRL-W z
-:nmap <C-W>z :MaximizerToggle<CR>
-
+nmap <C-W>z :MaximizerToggle<CR>
+nnoremap j gj
+nnoremap k gk
+" jk is escape
+inoremap jk <Esc>
 
 "" Plugins
 call plug#begin('~/.vim/plugged')
@@ -200,4 +204,4 @@ nmap <leader>p :CtrlP<cr>
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
-"
+
