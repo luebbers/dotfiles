@@ -92,7 +92,6 @@ nmap <leader>n :enew<CR>
 " \<space> - turn off search highlight
 nmap <leader><SPACE> :nohlsearch<CR>
 
-
 "" Keybindings ================================================================
 
 " Move between windows using ALT+movement or cursor keys
@@ -120,6 +119,17 @@ nmap <silent> <C-W>\| :vsp<CR>
 " Scroll with CTRL+J/CTRL+K
 nmap <silent> <C-J> 3<C-E>
 nmap <silent> <C-K> 3<C-Y>
+
+" Move in command line and insert mode with CTRL+HJKL
+cnoremap <C-H> <Left>
+cnoremap <C-J> <Down>
+cnoremap <C-K> <Up>
+cnoremap <C-L> <Right>
+inoremap <C-H> <Left>
+inoremap <C-J> <Down>
+inoremap <C-K> <Up>
+inoremap <C-L> <Right>
+
 
 " Save with CTRL+S
 " If the current buffer has never been saved, it will have no name,
