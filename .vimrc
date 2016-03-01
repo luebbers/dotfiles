@@ -20,6 +20,7 @@ if $MYSETUP_DEVEL == 1                  " general development plugins
    endif
    Plug 'airblade/vim-rooter'           " Rooter
    Plug 'scrooloose/syntastic'          " syntastic
+   Plug 'scrooloose/nerdtree'           " NERDTree
 endif
 
 if $MYSETUP_DEVEL_SW == 1               " software development-specific plugins
@@ -129,6 +130,9 @@ inoremap <C-H> <Left>
 inoremap <C-J> <Down>
 inoremap <C-K> <Up>
 inoremap <C-L> <Right>
+
+" Start NERDTree with CTRL+N
+noremap <C-N> :NERDTreeToggle<CR>
 
 
 " Save with CTRL+S
