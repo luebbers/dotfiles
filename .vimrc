@@ -72,6 +72,7 @@ set cursorline                          " Highlight current line
 set listchars=tab:▸\ ,eol:¬             " Use special characters for whitespace
 set fdm=syntax                          " Set fold mode to syntax-based
 set nofoldenable                        " Turn off folding by default
+set tags=./tags;~/work                  " set tags search path
 
 
 "" Leader commands ============================================================
@@ -92,6 +93,10 @@ nmap <leader>q :bp <BAR> bd #<CR>
 nmap <leader>n :enew<CR>
 " \<space> - turn off search highlight
 nmap <leader><SPACE> :nohlsearch<CR>
+" \N - toggle line numbers
+nmap <leader>N :set invnumber<CR>
+" \p - toggle paste mode and line numbers
+nmap <leader>p :call PasteToggle()<CR>
 
 "" Keybindings ================================================================
 
@@ -194,9 +199,6 @@ if executable('ag')
    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
-" Use a leader instead of the actual named binding
-nmap <leader>p :CtrlP<cr>
-
 " Easy bindings for its various modes
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
@@ -235,6 +237,17 @@ function! FoldToggle()
    else
       setlocal foldcolumn=4
       setlocal foldenable
+   endif
+endfunction
+
+" Toggle paste mode and line numbers
+function PasteToggle()
+   if &paste
+      setlocal nopaste
+      setlocal number
+   else
+      setlocal paste
+      setlocal nonumber
    endif
 endfunction
 
