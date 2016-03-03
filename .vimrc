@@ -70,6 +70,7 @@ set ttimeoutlen=0                       " Fix ESC timeout
 set wildmenu
 set wildmode=longest:full,full          " Turn on wildment
 set mouse=a                             " Enable mouse support
+set ttymouse=xterm2
 set cursorline                          " Highlight current line
 set listchars=tab:▸\ ,eol:¬             " Use special characters for whitespace
 set fdm=syntax                          " Set fold mode to syntax-based
