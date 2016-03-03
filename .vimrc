@@ -21,6 +21,7 @@ if $MYSETUP_DEVEL == 1                  " general development plugins
    Plug 'airblade/vim-rooter'           " Rooter
    Plug 'scrooloose/syntastic'          " syntastic
    Plug 'scrooloose/nerdtree'           " NERDTree
+   Plug 'AndrewRadev/linediff.vim'      " LineDiff
 endif
 
 if $MYSETUP_DEVEL_SW == 1               " software development-specific plugins
@@ -241,7 +242,7 @@ function! FoldToggle()
 endfunction
 
 " Toggle paste mode and line numbers
-function PasteToggle()
+function! PasteToggle()
    if &paste
       setlocal nopaste
       setlocal number
