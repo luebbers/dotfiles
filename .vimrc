@@ -90,8 +90,8 @@ nmap <leader>v :e ~/.vimrc<CR>
 nmap <leader>r :source ~/.vimrc<CR>
 " \q - close current buffer
 nmap <leader>q :bp <BAR> bd #<CR>
-" \n - new buffer
-nmap <leader>n :enew<CR>
+" \c - new buffer
+nmap <leader>c :enew<CR>
 " \<space> - turn off search highlight
 nmap <leader><SPACE> :nohlsearch<CR>
 " \N - toggle line numbers
