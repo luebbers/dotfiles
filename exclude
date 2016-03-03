@@ -3,5 +3,6 @@
 ^\./\.git
 ^\./README.md$
 ^\./update.sh$
-^\./\.mysetup$
+^\./\.localsetup$
+^\./\.localvimrc$
 \.swp$
