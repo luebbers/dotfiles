@@ -252,3 +252,10 @@ function! PasteToggle()
    endif
 endfunction
 
+
+"" Source local settings ======================================================
+
+if filereadable(expand('~/.localvimrc'))
+   source ~/.localvimrc
+endif
+

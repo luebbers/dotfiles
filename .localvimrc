@@ -1,0 +1,4 @@
+if isdirectory(expand('~/work/aalsdk/aaluser/include'))
+   set path+=~/work/aalsdk/aaluser/include
+endif
+

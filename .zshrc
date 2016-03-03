@@ -54,8 +54,8 @@ plugins=(git)
 # User configuration
 
 # source local per-host config
-if [ -e $HOME/.mysetup ]; then
-   source $HOME/.mysetup
+if [ -e $HOME/.localsetup ]; then
+   source $HOME/.localsetup
 fi
 
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"

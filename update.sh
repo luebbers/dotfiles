@@ -53,9 +53,9 @@ function doIt() {
    echo "done."
 
    # install setup template, if not present
-   if [ ! -e $HOME/.mysetup ]; then
+   if [ ! -e $HOME/.localsetup ]; then
       echo "Installing per-host setup template. Edit .mysetup to fit your needs."
-      cp $DOTFILES/.mysetup $HOME/.mysetup
+      cp $DOTFILES/.localsetup $HOME/.localsetup
    fi
 }
 
