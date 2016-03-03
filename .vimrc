@@ -12,6 +12,7 @@ Plug 'tomtom/tcomment_vim'              " TComment
 Plug 'tpope/vim-surround'               " Surround
 Plug 'ctrlpvim/ctrlp.vim'               " CTRLP
 Plug 'szw/vim-maximizer'                " maximizer
+Plug 'christoomey/vim-tmux-navigator'   " vim-tmux-navigator
 
 if $MYSETUP_DEVEL == 1                  " general development plugins
    Plug 'tpope/vim-fugitive'            " fugitive
@@ -101,19 +102,27 @@ nmap <leader>p :call PasteToggle()<CR>
 
 "" Keybindings ================================================================
 
-" Move between windows using ALT+movement or cursor keys
+" Move between vim and tmux windows using ALT+movement and cursor keys
 execute "set <M-h>=\eh"
 execute "set <M-j>=\ej"
 execute "set <M-k>=\ek"
 execute "set <M-l>=\el"
-nmap <silent> <M-j> :wincmd j<CR>
-nmap <silent> <M-h> :wincmd h<CR>
-nmap <silent> <M-l> :wincmd l<CR>
-nmap <silent> <M-k> :wincmd k<CR>
-nmap <silent> <Down> :wincmd j<CR>
-nmap <silent> <Left> :wincmd h<CR>
-nmap <silent> <Right> :wincmd l<CR>
-nmap <silent> <Up> :wincmd k<CR>
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <M-j> :TmuxNavigateDown<CR>
+nnoremap <silent> <M-h> :TmuxNavigateLeft<CR>
+nnoremap <silent> <M-l> :TmuxNavigateRight<CR>
+nnoremap <silent> <M-k> :TmuxNavigateUp<CR>
+nnoremap <silent> <M-CR> :TmuxNavigatePrevious<CR>
+nnoremap <M-Down> :TmuxNavigateDown<CR>
+nnoremap <M-Left> :TmuxNavigateLeft<CR>
+nnoremap <M-Right> :TmuxNavigateRight<CR>
+nnoremap <M-Up> :TmuxNavigateUp<CR>
+
+" Unmap cursor keys (use hjkl)
+map <Up> <NOP>
+map <Down> <NOP>
+map <Left> <NOP>
+map <Right> <NOP>
 
 " Move between buffers using CTRL+movement
 nmap <silent> <C-H> :bp<CR>
