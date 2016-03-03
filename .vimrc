@@ -152,6 +152,7 @@ noremap <C-N> :NERDTreeToggle<CR>
 
 " Get to command line with ;
 noremap ; :
+vnoremap ; :
 
 " Save with CTRL+S
 " If the current buffer has never been saved, it will have no name,
