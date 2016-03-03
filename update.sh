@@ -54,8 +54,14 @@ function doIt() {
 
    # install setup template, if not present
    if [ ! -e $HOME/.localsetup ]; then
-      echo "Installing per-host setup template. Edit .mysetup to fit your needs."
+      echo "Installing per-host setup template. Edit .localsetup to fit your needs."
       cp $DOTFILES/.localsetup $HOME/.localsetup
+   fi
+
+   # install vim template, if not present
+   if [ ! -e $HOME/.localvimrc ]; then
+      echo "Installing per-host vim template. Edit .localvimrc to fit your needs."
+      cp $DOTFILES/.localvimrc $HOME/.localvimrc
    fi
 }
 

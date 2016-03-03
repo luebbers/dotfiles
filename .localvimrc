@@ -1,4 +1,8 @@
-if isdirectory(expand('~/work/aalsdk/aaluser/include'))
-   set path+=~/work/aalsdk/aaluser/include
-endif
+" This file can be used to set host-specific vim commands
+
+" Example: add local include path to vim's path:
+
+" if isdirectory(expand('~/work/aalsdk/aaluser/include'))
+"    set path+=~/work/aalsdk/aaluser/include
+" endif
 
