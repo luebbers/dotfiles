@@ -1,3 +1,6 @@
+"" Figure out environment
+let os = substitute(system("uname -s"), '\n$', '', '')
+
 "" Plugins ====================================================================
 
 call plug#begin('~/.vim/plugged')
@@ -104,11 +107,18 @@ nmap <leader>p :call PasteToggle()<CR>
 "" Keybindings ================================================================
 
 " Move between vim and tmux windows using ALT+movement and cursor keys
-execute "set <M-h>=\eh"
-execute "set <M-j>=\ej"
-execute "set <M-k>=\ek"
-execute "set <M-l>=\el"
 let g:tmux_navigator_no_mappings = 1
+if os == "Darwin"
+   execute "set <M-h>=˙"
+   execute "set <M-j>=∆"
+   execute "set <M-k>=˚"
+   execute "set <M-l>=¬"
+else
+   execute "set <M-h>=\eh"
+   execute "set <M-j>=\ej"
+   execute "set <M-k>=\ek"
+   execute "set <M-l>=\el"
+endif
 nnoremap <silent> <M-j> :TmuxNavigateDown<CR>
 nnoremap <silent> <M-h> :TmuxNavigateLeft<CR>
 nnoremap <silent> <M-l> :TmuxNavigateRight<CR>
