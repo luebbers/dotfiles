@@ -117,7 +117,7 @@ if [ -z "$TMUX" ]; then      # only try this outside of a tmux session
    TSESS=`tmux list-sessions`
    if [ $? -ne 0 ]; then     # no sessions
       echo -n "No tmux sessions running - create one? [Y/n] "
-      read -q REPLY
+      read -k 1 REPLY
       if [ "$REPLY" != "n" ]; then
          tmux
       fi
@@ -137,7 +137,7 @@ if [ -z "$TMUX" ]; then      # only try this outside of a tmux session
          fi
       else
          echo -n "Reattach to running tmux session? [Y/n] "
-         read -q REPLY
+         read -k 1 REPLY
          if [ "$REPLY" != "n" ]; then
             tra
          fi
