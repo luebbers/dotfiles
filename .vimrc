@@ -236,20 +236,28 @@ nmap ga <Plug>(EasyAlign)
 
 "" Syntax checkers ============================================================
 
-" Configure Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" let g:syntastic_systemverilog_checkers = ['verilator']
-let g:syntastic_filetype_map = { "systemverilog" : "verilog" }
+if $MYSETUP_DEVEL == 1                  " general development plugins
+   " Configure Syntastic
+   set statusline+=%#warningmsg#
+   set statusline+=%{SyntasticStatuslineFlag()}
+   set statusline+=%*
+   let g:syntastic_always_populate_loc_list = 1
+   let g:syntastic_auto_loc_list = 1
+   let g:syntastic_check_on_open = 1
+   let g:syntastic_check_on_wq = 0
+   " let g:syntastic_systemverilog_checkers = ['verilator']
+   let g:syntastic_filetype_map = { "systemverilog" : "verilog" }
+   let g:syntastic_always_populate_loc_list = 1
+   let g:syntastic_loc_list_height = 5
+   let g:syntastic_auto_loc_list = 1
+   let g:syntastic_check_on_open = 1
+   let g:syntastic_check_on_wq = 1
+endif
 
-" Configure Clang
-let g:clang_user_options='|| exit 0'
-
+if $MYSETUP_DEVEL_SW == 1               " software development-specific plugins
+   " Configure Clang
+   let g:clang_user_options='|| exit 0'
+endif
 
 "" Functions ==================================================================
 
