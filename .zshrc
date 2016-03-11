@@ -129,9 +129,9 @@ if [ -z "$TMUX" ]; then      # only try this outside of a tmux session
          else                                     # less than ten sessions
             echo "Multiple tmux sessions running:"
             echo "$TSESS"
-            echo -n "Choose one to reattach to: [n to cancel] "
-            read -k 1 REPLY
-            if [ "$REPLY" != "n" ]; then
+            echo -n "Choose one to reattach to: [ENTER to cancel] "
+            read REPLY
+            if [ ! -z "$REPLY" ]; then
                ta $REPLY
             fi
          fi
