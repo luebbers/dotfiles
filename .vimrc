@@ -103,6 +103,8 @@ nmap <leader><SPACE> :nohlsearch<CR>
 nmap <leader>N :set invnumber<CR>
 " \p - toggle paste mode and line numbers
 nmap <leader>p :call PasteToggle()<CR>
+" \t - update tags database
+nmap <leader>t :! ~/go/rebuild-ctags.sh<CR>
 
 "" Keybindings ================================================================
 
