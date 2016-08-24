@@ -30,6 +30,7 @@ endif
 
 if $MYSETUP_DEVEL_SW == 1               " software development-specific plugins
    Plug 'Rip-Rip/clang_complete'        " clang_complete
+   Plug 'majutsushi/tagbar'             " tagbar
 endif
 
 if $MYSETUP_DEVEL_HW == 1               " hardware development-specific plugins
@@ -103,8 +104,10 @@ nmap <leader><SPACE> :nohlsearch<CR>
 nmap <leader>N :set invnumber<CR>
 " \p - toggle paste mode and line numbers
 nmap <leader>p :call PasteToggle()<CR>
-" \t - update tags database
-nmap <leader>t :! ~/go/rebuild-ctags.sh<CR>
+" \T - update tags database
+nmap <leader>T :! ~/go/rebuild-ctags.sh<CR>
+" \t - show tagbar
+nmap <leader>t :TagbarToggle<CR>
 
 "" Keybindings ================================================================
 
@@ -131,8 +134,8 @@ map <Left> <NOP>
 map <Right> <NOP>
 
 " Move between buffers using CTRL+movement
-nmap <silent> <C-H> :bp<CR>
-nmap <silent> <C-L> :bn<CR>
+nmap <silent> <C-H> :silent :bp<CR>
+nmap <silent> <C-L> :silent :bn<CR>
 
 " Create splits with CTRL+W- and CTRL+W|
 nmap <silent> <C-W>- :sp<CR>
