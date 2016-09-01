@@ -250,6 +250,7 @@ if $MYSETUP_DEVEL == 1                  " general development plugins
    let g:syntastic_auto_loc_list = 1
    let g:syntastic_check_on_open = 1
    let g:syntastic_check_on_wq = 1
+   let g:rooter_silent_chdir = 1
 endif
 
 if $MYSETUP_DEVEL_SW == 1               " software development-specific plugins
