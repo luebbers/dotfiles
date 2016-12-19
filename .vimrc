@@ -201,6 +201,8 @@ highlight Folded cterm=none ctermfg=11
 syntax enable
 set background=dark
 "let g:solarized_termcolors=256
+autocmd InsertEnter * highlight CursorLineNr term=bold ctermbg=3 ctermfg=8 gui=bold guifg=Black guibg=Yellow
+autocmd InsertLeave * highlight CursorLineNr term=bold ctermfg=11 ctermbg=8 gui=bold guifg=Yellow guibg=Black
 
 " Set up airline
 let g:airline_powerline_fonts = 1
