@@ -43,6 +43,7 @@ call plug#end()                         " Add plugins to &runtimepath
 "" General ====================================================================
 
 set number                              " Show line numbers
+set relativenumber                      " Show relative line numbers
 set linebreak                           " Break lines at word (requires wrap)
 set showbreak=+++                       " Wrap-broken line prefix
 set textwidth=79                        " Line wrap (number of cols)
@@ -132,6 +133,10 @@ map <Up> <NOP>
 map <Down> <NOP>
 map <Left> <NOP>
 map <Right> <NOP>
+
+" Move virtual lines when used without a count, and physical lines otherwise
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 " Move between buffers using CTRL+movement
 nmap <silent> <C-H> :silent :bp<CR>
