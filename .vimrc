@@ -10,7 +10,8 @@ Plug 'vim-airline/vim-airline'          " Airline status line
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/vim-easy-align'          " Easy align
 Plug 'bronson/vim-trailing-whitespace'  " vim-trailing-whitespace
-Plug 'ervandew/supertab'                " Supertab
+"Plug 'ervandew/supertab'                " Supertab
+Plug 'Valloric/YouCompleteMe'           " YouCompleteMe
 Plug 'tomtom/tcomment_vim'              " TComment
 Plug 'tpope/vim-surround'               " Surround
 Plug 'ctrlpvim/ctrlp.vim'               " CTRLP
@@ -29,7 +30,7 @@ if $MYSETUP_DEVEL == 1                  " general development plugins
 endif
 
 if $MYSETUP_DEVEL_SW == 1               " software development-specific plugins
-   Plug 'Rip-Rip/clang_complete'        " clang_complete
+"   Plug 'Rip-Rip/clang_complete'        " clang_complete
    Plug 'majutsushi/tagbar'             " tagbar
 endif
 
@@ -46,7 +47,7 @@ set number                              " Show line numbers
 set relativenumber                      " Show relative line numbers
 set linebreak                           " Break lines at word (requires wrap)
 set showbreak=+++                       " Wrap-broken line prefix
-set textwidth=79                        " Line wrap (number of cols)
+set textwidth=80                        " Line wrap (number of cols)
 set colorcolumn=+1                      " Highlight column beyond textwidth
 set showmatch                           " Highlight matching brace
 set visualbell                          " Use visual bell (no beeping)
@@ -57,11 +58,11 @@ set ignorecase                          " Always case-insensitive
 set incsearch                           " Searches for strings incrementally
 
 set autoindent                          " Auto-indent new lines
-set expandtab                           " Use spaces instead of tabs
-set shiftwidth=4                        " Number of auto-indent spaces
+"set expandtab                           " Use spaces instead of tabs
+set shiftwidth=8                        " Number of auto-indent spaces
 set smartindent                         " Enable smart-indent
 set smarttab                            " Enable smart-tabs
-set softtabstop=4                       " Number of spaces per Tab
+set softtabstop=8                       " Number of spaces per Tab
 
 
 "" Advanced ===================================================================
@@ -109,6 +110,14 @@ nmap <leader>p :call PasteToggle()<CR>
 nmap <leader>T :! ~/go/rebuild-ctags.sh<CR>
 " \t - show tagbar
 nmap <leader>t :TagbarToggle<CR>
+" \e - show location list (errors)
+nmap <leader>e :lopen<CR>
+" \g - YouCompleteMe Goto
+nmap <leader>g :YcmCompleter GoTo<CR>
+" \G - YouCompleteMe Goto in new split
+nmap <leader>G :split<CR>:YcmCompleter GoTo<CR>
+" \d - YouCompleteMe GetDoc
+nmap <leader>d :YcmCompleter GetDoc<CR>
 
 "" Keybindings ================================================================
 
@@ -261,6 +270,12 @@ if $MYSETUP_DEVEL == 1                  " general development plugins
    let g:syntastic_check_on_open = 1
    let g:syntastic_check_on_wq = 1
    let g:rooter_silent_chdir = 1
+   " Configure YCM
+   let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+   let g:ycm_open_loclist_on_ycm_diags = 1
+   let g:ycm_always_populate_location_list = 1
+   let g:ycm_show_diagnostics_ui = 0
+   let g:ycm_autoclose_preview_window_after_insertion = 1
 endif
 
 if $MYSETUP_DEVEL_SW == 1               " software development-specific plugins
