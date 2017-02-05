@@ -10,8 +10,10 @@ Plug 'vim-airline/vim-airline'          " Airline status line
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/vim-easy-align'          " Easy align
 Plug 'bronson/vim-trailing-whitespace'  " vim-trailing-whitespace
-"Plug 'ervandew/supertab'                " Supertab
+Plug 'ervandew/supertab'                " Supertab
 Plug 'Valloric/YouCompleteMe'           " YouCompleteMe
+Plug 'SirVer/ultisnips'                 " UltiSnips
+Plug 'honza/vim-snippets'               "   and snippets for it
 Plug 'tomtom/tcomment_vim'              " TComment
 Plug 'tpope/vim-surround'               " Surround
 Plug 'ctrlpvim/ctrlp.vim'               " CTRLP
@@ -63,6 +65,8 @@ set shiftwidth=8                        " Number of auto-indent spaces
 set smartindent                         " Enable smart-indent
 set smarttab                            " Enable smart-tabs
 set softtabstop=8                       " Number of spaces per Tab
+
+set hidden				" Allow hidden buffers
 
 
 "" Advanced ===================================================================
@@ -270,18 +274,33 @@ if $MYSETUP_DEVEL == 1                  " general development plugins
    let g:syntastic_check_on_open = 1
    let g:syntastic_check_on_wq = 1
    let g:rooter_silent_chdir = 1
-   " Configure YCM
-   let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-   let g:ycm_open_loclist_on_ycm_diags = 1
-   let g:ycm_always_populate_location_list = 1
-   let g:ycm_show_diagnostics_ui = 0
-   let g:ycm_autoclose_preview_window_after_insertion = 1
 endif
 
 if $MYSETUP_DEVEL_SW == 1               " software development-specific plugins
    " Configure Clang
    let g:clang_user_options='|| exit 0'
 endif
+
+
+"" Completers and Snippets engines ============================================
+
+" Configure YCM
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_open_loclist_on_ycm_diags = 1
+let g:ycm_always_populate_location_list = 1
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" Configure UltiSnips
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 "" Functions ==================================================================
 
