@@ -65,6 +65,7 @@ set shiftwidth=8                        " Number of auto-indent spaces
 set smartindent                         " Enable smart-indent
 set smarttab                            " Enable smart-tabs
 set softtabstop=8                       " Number of spaces per Tab
+set cinoptions+=(0
 
 set hidden				" Allow hidden buffers
 
