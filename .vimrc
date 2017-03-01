@@ -50,6 +50,7 @@ set relativenumber                      " Show relative line numbers
 set linebreak                           " Break lines at word (requires wrap)
 set showbreak=+++                       " Wrap-broken line prefix
 set textwidth=80                        " Line wrap (number of cols)
+autocmd FileType gitcommit set tw=72    "   Special setting for gitcommit
 set colorcolumn=+1                      " Highlight column beyond textwidth
 set showmatch                           " Highlight matching brace
 set visualbell                          " Use visual bell (no beeping)
