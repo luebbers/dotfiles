@@ -64,7 +64,8 @@ export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=$LANG
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -107,6 +108,11 @@ stty -ixon
 # fix dircolors for solarized dark
 eval `dircolors ~/.dircolors-dark`
 
+# set proxies
+export http_proxy=http://proxy-jf.intel.com:911
+export https_proxy=https://proxy-jf.intel.com:911
+
+
 # set mc solarized theme
 export MC_SKIN=$HOME/.mc/solarized.ini
 
@@ -116,10 +122,19 @@ export MC_SKIN=$HOME/.mc/solarized.ini
 if [ -z "$TMUX" ]; then      # only try this outside of a tmux session
    TSESS=`tmux list-sessions`
    if [ $? -ne 0 ]; then     # no sessions
-      echo -n "No tmux sessions running - create one? [Y/n] "
-      read -k 1 REPLY
-      if [ "$REPLY" != "n" ]; then
+      echo -n "No tmux sessions running, creating one in "
+      KEY=0
+      for i in 3 2 1 ; do
+         echo -n "$i..."
+         if read -k -r -s -n 0.5 a; then
+            KEY=1
+            break;
+         fi
+      done
+      if [ $KEY -eq 0 ]; then
          tmux
+      else
+         echo "aborted."
       fi
    else
       if [ `echo $TSESS | wc -l` -gt 1 ]; then    # more than one session
@@ -136,10 +151,19 @@ if [ -z "$TMUX" ]; then      # only try this outside of a tmux session
             fi
          fi
       else
-         echo -n "Reattach to running tmux session? [Y/n] "
-         read -k 1 REPLY
-         if [ "$REPLY" != "n" ]; then
+         echo -n "Reattaching to running tmux session in "
+         KEY=0
+         for i in 3 2 1 ; do
+            echo -n "$i..."
+            if read -k -r -s -t 0.5 a; then
+               KEY=1
+               break;
+            fi
+         done
+         if [ $KEY -eq 0 ]; then
             tra
+         else
+            echo "aborted."
          fi
       fi
    fi
