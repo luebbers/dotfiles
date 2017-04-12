@@ -11,7 +11,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/vim-easy-align'          " Easy align
 Plug 'bronson/vim-trailing-whitespace'  " vim-trailing-whitespace
 Plug 'ervandew/supertab'                " Supertab
-Plug 'Valloric/YouCompleteMe'           " YouCompleteMe
 Plug 'SirVer/ultisnips'                 " UltiSnips
 Plug 'honza/vim-snippets'               "   and snippets for it
 Plug 'tomtom/tcomment_vim'              " TComment
@@ -88,6 +87,8 @@ set listchars=tab:▸\ ,eol:¬             " Use special characters for whitespa
 set fdm=syntax                          " Set fold mode to syntax-based
 set nofoldenable                        " Turn off folding by default
 set tags=./tags;~/work                  " set tags search path
+set splitbelow                          " open new split panes to the bottom
+set splitright                          " and right
 
 
 "" Leader commands ============================================================
@@ -118,12 +119,6 @@ nmap <leader>T :! ~/go/rebuild-ctags.sh<CR>
 nmap <leader>t :TagbarToggle<CR>
 " \e - show location list (errors)
 nmap <leader>e :lopen<CR>
-" \g - YouCompleteMe Goto
-nmap <leader>g :YcmCompleter GoTo<CR>
-" \G - YouCompleteMe Goto in new split
-nmap <leader>G :split<CR>:YcmCompleter GoTo<CR>
-" \d - YouCompleteMe GetDoc
-nmap <leader>d :YcmCompleter GetDoc<CR>
 
 "" Keybindings ================================================================
 
@@ -250,6 +245,7 @@ endif
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
+nmap <C-[> :CtrlPTag<cr>
 
 " Start interactive EasyAlign in visual mode
 xmap ga <Plug>(EasyAlign)
