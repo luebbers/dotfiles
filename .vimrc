@@ -245,7 +245,7 @@ endif
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
-nmap <C-[> :CtrlPTag<cr>
+nmap <C-\> :CtrlPTag<cr>
 
 " Start interactive EasyAlign in visual mode
 xmap ga <Plug>(EasyAlign)
