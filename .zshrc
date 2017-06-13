@@ -128,7 +128,7 @@ if [ -z "$TMUX" ]; then      # only try this outside of a tmux session
       KEY=0
       for i in 3 2 1 ; do
          echo -n "$i..."
-         if read -k -r -s -n 0.5 a; then
+         if read -k -r -s -t 0.5 a; then
             KEY=1
             break;
          fi
