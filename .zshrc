@@ -118,6 +118,10 @@ unsetopt sharehistory
 # set mc solarized theme
 export MC_SKIN=$HOME/.mc/solarized.ini
 
+# save (possibly changed) DISPLAY variable for use with tmux
+echo $DISPLAY > $HOME/.display
+alias ud="export DISPLAY=\$(cat $HOME/.display)"
+
 # Check for existing tmux sessions
 # If one exists, offer to attach,
 # otherwise offer to create new.
