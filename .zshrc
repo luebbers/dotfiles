@@ -118,10 +118,10 @@ unsetopt sharehistory
 # set mc solarized theme
 export MC_SKIN=$HOME/.mc/solarized.ini
 
-# Check for existing tmux sessions
-# If one exists, offer to attach,
-# otherwise offer to create new.
-if [ -z "$TMUX" ]; then      # only try this outside of a tmux session
+# If not root or other environment where we don't want this, check for
+# existing tmux sessions If one exists, offer to attach, otherwise offer to
+# create new.
+if [ "$UID" -ne 0 -a -z "$TMUX" -a "$SKIPTMUX" != "yes" ]; then      # only try this outside of a tmux session
    TSESS=`tmux list-sessions`
    if [ $? -ne 0 ]; then     # no sessions
       echo -n "No tmux sessions running, creating one in "
