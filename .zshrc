@@ -108,10 +108,6 @@ stty -ixon
 # fix dircolors for solarized dark
 eval `dircolors ~/.dircolors-dark`
 
-# set proxies
-export http_proxy=http://proxy-jf.intel.com:911
-export https_proxy=https://proxy-jf.intel.com:911
-
 # don't share history between shells
 unsetopt sharehistory
 
