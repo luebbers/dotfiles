@@ -118,6 +118,9 @@ export MC_SKIN=$HOME/.mc/solarized.ini
 echo $DISPLAY > $HOME/.display
 alias ud="export DISPLAY=\$(cat $HOME/.display)"
 
+# import autoenv-zsh
+source ~/.dotfiles/lib/zsh-autoenv/autoenv.zsh
+
 # If not root or other environment where we don't want this, check for
 # existing tmux sessions If one exists, offer to attach, otherwise offer to
 # create new.
