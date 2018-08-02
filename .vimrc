@@ -45,7 +45,7 @@ call plug#end()                         " Add plugins to &runtimepath
 "" General ====================================================================
 
 set number                              " Show line numbers
-set relativenumber                      " Show relative line numbers
+"set relativenumber                      " Show relative line numbers
 set linebreak                           " Break lines at word (requires wrap)
 set showbreak=+++                       " Wrap-broken line prefix
 set textwidth=80                        " Line wrap (number of cols)
@@ -224,6 +224,8 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+" Set MacVim font
+set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 
 "" Search and index plugins ===================================================
 
