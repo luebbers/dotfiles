@@ -44,7 +44,7 @@ function doIt() {
    if [ ! -d $HOME/.config/omf ]; then
       read -p "No oh-my-fish found, install?" -n 1
       if [[ $REPLY =~ ^[Yy]$ ]]; then
-         sh -c "$(curl -L https://get.oh-my.fish | fish)"
+         curl -L https://get.oh-my.fish | fish
 	 omf install bobthefish
       fi
    fi
