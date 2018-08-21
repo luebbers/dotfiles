@@ -6,3 +6,4 @@
 ^\./\.localsetup$
 ^\./\.localvimrc$
 \.swp$
+\./.config$

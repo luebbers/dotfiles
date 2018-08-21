@@ -28,17 +28,18 @@ function doIt() {
 
    # TODO: update vim plugins
 
-   # check for zsh
-   if [ ! -e /usr/bin/zsh -a ! -e /bin/sh ]; then
-      echo "No zsh found, please install before running update.sh."
+   # check for fish
+   if [ ! -e /usr/bin/fish -a ! -e /bin/fish -a ! -e /usr/local/bin/fish ]; then
+      echo "No fish found, please install before running update.sh."
       exit 1
    fi
 
-   # check for oh-my-zsh
-   if [ ! -d $HOME/.oh-my-zsh ]; then
-      read -p "No oh-my-zsh found, install?" -n 1
+   # check for oh-my-fish
+   if [ ! -d $HOME/.config/omf ]; then
+      read -p "No oh-my-fish found, install?" -n 1
       if [[ $REPLY =~ ^[Yy]$ ]]; then
-         sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+         sh -c "$(curl -L https://get.oh-my.fish | fish)"
+	 omf install bobthefish
       fi
    fi
 
@@ -49,6 +50,7 @@ function doIt() {
    for i in $FILES; do
       ln -sf "$DOTFILES/$i" .
    done
+   ln -sf "$DOTFILES/.config/fish/fish.config" .config/fish/
    cd "$DOTFILES"
    echo "done."
 
