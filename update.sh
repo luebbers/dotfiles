@@ -17,6 +17,12 @@ function doIt() {
       exit 1
    fi
 
+   # check for curl
+   if [ ! -e /usr/bin/curl ]; then
+      echo "No curl found, please install before running update.sh."
+      exit 1
+   fi
+
    # check if vim has plugin manager
    if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
       read -p "No plugin manager found, install vim-plug?" -n 1
