@@ -124,7 +124,7 @@ source ~/.dotfiles/lib/zsh-autoenv/autoenv.zsh
 # If not root or other environment where we don't want this, check for
 # existing tmux sessions If one exists, offer to attach, otherwise offer to
 # create new.
-if [ "$UID" -ne 0 -a -z "$TMUX" -a "$SKIPTMUX" != "yes" ]; then      # only try this outside of a tmux session
+if [ -z "$TMUX" -a "$SSH_CONNECTION" != "" ]; then      # only try this outside of a tmux session and via SSH
    TSESS=`tmux list-sessions`
    if [ $? -ne 0 ]; then     # no sessions
       echo -n "No tmux sessions running, creating one in "
