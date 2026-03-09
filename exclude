@@ -1,8 +1,0 @@
-^\.$
-^\./exclude$
-^\./\.git
-^\./README.md$
-^\./update.sh$
-^\./\.localsetup$
-^\./\.localvimrc$
-\.swp$
