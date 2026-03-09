@@ -3,3 +3,29 @@ command_timeout = 5000
 
 [python]
 disabled = true
+
+# no-nerd-font preset (Terminal.app compatibility)
+[battery]
+full_symbol = "• "
+charging_symbol = "⇡ "
+discharging_symbol = "⇣ "
+unknown_symbol = "❓ "
+empty_symbol = "❗ "
+
+[erlang]
+symbol = "ⓔ "
+
+[fortran]
+symbol = "F "
+
+[nodejs]
+symbol = "[⬢](bold green) "
+
+[pulumi]
+symbol = "🧊 "
+
+[typst]
+symbol = "t "
+
+[git_branch]
+symbol = "⎇ "
