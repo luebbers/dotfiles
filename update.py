@@ -17,6 +17,12 @@ SYMLINKS = {
     ".zshrc": HOME / ".zshrc",
     ".zprofile": HOME / ".zprofile",
     "config/starship.toml": HOME / ".config" / "starship.toml",
+    # Claude Code
+    "claude/settings.json": HOME / ".claude" / "settings.json",
+    "claude/settings.local.json": HOME / ".claude" / "settings.local.json",
+    "claude/statusline-command.sh": HOME / ".claude" / "statusline-command.sh",
+    "claude/skills/notebooklm": HOME / ".claude" / "skills" / "notebooklm",
+    "claude/skills/obsidian-cli": HOME / ".claude" / "skills" / "obsidian-cli",
 }
 
 # Homebrew packages required

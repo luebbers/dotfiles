@@ -13,3 +13,6 @@ source <(fzf --zsh)
 
 # starship prompt
 eval "$(starship init zsh)"
+
+# Machine-local config (secrets, env vars not tracked by git)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(~/.local/bin/notebooklm list:*)",
+      "Bash(~/.local/bin/notebooklm use:*)",
+      "Bash(~/.local/bin/notebooklm ask:*)"
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "skill_name": "obsidian-cli",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Was steht in meiner heutigen Tagesnotiz?",
+      "expected_output": "The contents of today's daily note (2026-03-17.md) are read using the CLI and displayed to the user.",
+      "files": [],
+      "assertions": [
+        {"text": "used obsidian CLI (daily:read or read) rather than cat/Read tool on the file"},
+        {"text": "response contains actual content from the daily note (not just 'the file is empty' or a generic answer)"},
+        {"text": "response is in German"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Füge zur heutigen Tagesnotiz hinzu: [TEST] Call mit Marco - n8n Webhook-Setup besprochen.",
+      "expected_output": "The text is appended to today's daily note using the CLI's daily:append command.",
+      "files": [],
+      "assertions": [
+        {"text": "used obsidian CLI (daily:append) rather than writing to the file directly"},
+        {"text": "the text '[TEST] Call mit Marco' appears in the daily note after the operation"},
+        {"text": "confirmed the action to the user in German"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Welche Notizen im Vault verlinken auf die Home-Notiz?",
+      "expected_output": "The CLI's backlinks command is used to find notes that link to Home.md, and the results are shown.",
+      "files": [],
+      "assertions": [
+        {"text": "used obsidian CLI backlinks command rather than grep-scanning files for '[[Home]]'"},
+        {"text": "response lists specific note names (not just 'I searched for backlinks')"},
+        {"text": "response is in German"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Suche im Vault nach allem was mit 'Review' zu tun hat.",
+      "expected_output": "The CLI's search command is used to find vault content mentioning 'Review', results are listed.",
+      "files": [],
+      "assertions": [
+        {"text": "used obsidian CLI search command rather than grep on the filesystem"},
+        {"text": "response lists actual file names from the vault (not a generic answer)"},
+        {"text": "response is in German"}
+      ]
+    }
+  ]
+}
