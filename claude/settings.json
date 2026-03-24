@@ -1,17 +1,23 @@
 {
-  "enabledPlugins": {
-    "superpowers@claude-plugins-official": true,
-    "anthropic-skills@local": true,
-    "skill-creator@claude-plugins-official": true
+  "permissions": {
+    "allow": [ ]
   },
   "statusLine": {
     "type": "command",
     "command": "bash $HOME/.claude/statusline-command.sh"
   },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "anthropic-skills@local": true,
+    "skill-creator@claude-plugins-official": true
+  },
   "mcpServers": {
     "mcp-ssh": {
       "command": "npx",
-      "args": ["@aiondadotcom/mcp-ssh"]
+      "args": [
+        "@aiondadotcom/mcp-ssh"
+      ]
     }
-  }
+  },
+  "model": "opus"
 }
