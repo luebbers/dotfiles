@@ -23,6 +23,7 @@ SYMLINKS = {
     "claude/statusline-command.sh": HOME / ".claude" / "statusline-command.sh",
     "claude/skills/notebooklm": HOME / ".claude" / "skills" / "notebooklm",
     "claude/skills/obsidian-cli": HOME / ".claude" / "skills" / "obsidian-cli",
+    "claude/skills/daily-review": HOME / ".claude" / "skills" / "daily-review",
 }
 
 # Homebrew packages required
