@@ -5,6 +5,7 @@
   "permissions": {
     "allow": []
   },
+  "model": "sonnet",
   "statusLine": {
     "type": "command",
     "command": "bash $HOME/.claude/statusline-command.sh"
@@ -14,6 +15,9 @@
     "anthropic-skills@local": true,
     "skill-creator@claude-plugins-official": true
   },
+  "effortLevel": "high",
+  "tui": "fullscreen",
+  "teammateMode": "auto",
   "mcpServers": {
     "mcp-ssh": {
       "command": "npx",
@@ -28,5 +32,6 @@
       ]
     }
   },
-  "teammateMode": "auto"
+  "agentPushNotifEnabled": true,
+  "remoteControlAtStartup": true
 }
